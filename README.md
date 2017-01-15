@@ -1,13 +1,3 @@
-#
-#                       _       _                     _
-#    ___  ___ _ __ __ _| |_ ___| |__  _ __   __ _  __| |
-#   / __|/ __| '__/ _` | __/ __| '_ \| '_ \ / _` |/ _` |
-#   \__ \ (__| | | (_| | || (__| | | | |_) | (_| | (_| |
-#   |___/\___|_|  \__,_|\__\___|_| |_| .__/ \__,_|\__,_|
-#                                    |_|
-#   v1.0.0
-#   YourOtherLeft software
-
 Scratchpad is a sample Spring Boot application that implements a REST API.
 
 
