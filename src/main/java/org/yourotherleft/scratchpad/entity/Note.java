@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @author jallen
  */
 @Entity
-@Table(name = "Note")
+@Table(name = "Notes")
 public class Note implements Serializable {
 
     @Id
