@@ -30,7 +30,7 @@ AUTHENTICATION
 
 This application uses Spring Security to enforce authenticated requests to its API.  For now, Basic Authentication is used to lock down all requests to:
 
-http://localhost:[port]/api/**
+    http://localhost:[port]/api/**
 
 To interact with the API, you must first create a user.  Super conveniently, the admin endpoints _don't_ require authentication, mwahaha.  Create a user by executing a POST to this endpoint:
 
@@ -38,9 +38,7 @@ To interact with the API, you must first create a user.  Super conveniently, the
 
 With a request body like:
 
-    ```
     {
       "username" : "homer"
       "password" : "donuts!"
     }
-    ```
