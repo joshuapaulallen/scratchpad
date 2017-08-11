@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.yourotherleft.scratchpad.security.ApiKeyAuthenticationProvider;
 import org.yourotherleft.scratchpad.security.ScratchpadUserDetailsService;
 
 /**
@@ -21,15 +22,19 @@ import org.yourotherleft.scratchpad.security.ScratchpadUserDetailsService;
 public class ScratchpadSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	private final ScratchpadUserDetailsService scratchpadUserDetailsService;
+	private final ApiKeyAuthenticationProvider apiKeyAuthenticationProvider;
 
 	@Autowired
-	public ScratchpadSecurityConfiguration(final ScratchpadUserDetailsService scratchpadUserDetailsService) {
+	public ScratchpadSecurityConfiguration(final ScratchpadUserDetailsService scratchpadUserDetailsService, final ApiKeyAuthenticationProvider apiKeyAuthenticationProvider) {
 		this.scratchpadUserDetailsService = scratchpadUserDetailsService;
+		this.apiKeyAuthenticationProvider = apiKeyAuthenticationProvider;
 	}
 
 	@Override
 	protected void configure(final AuthenticationManagerBuilder auth) {
-		auth.authenticationProvider(authenticationProvider());
+		auth
+			.authenticationProvider(authenticationProvider())
+			.authenticationProvider(apiKeyAuthenticationProvider);
 	}
 
 	@Override

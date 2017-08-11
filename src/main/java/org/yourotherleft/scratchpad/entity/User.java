@@ -22,9 +22,17 @@ public class User implements Serializable {
 	@Column(nullable = false)
 	private String password;
 
+	@Column
+	private String apiKey;
+
 	public User(final String username, final String password) {
+		this(username, password, null);
+	}
+
+	public User(final String username, final String password, final String apiKey) {
 		this.username = username;
 		this.password = password;
+		this.apiKey = apiKey;
 	}
 
 	/**
@@ -46,6 +54,10 @@ public class User implements Serializable {
 		return password;
 	}
 
+	public String getApiKey() {
+		return apiKey;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
@@ -57,12 +69,13 @@ public class User implements Serializable {
 		User user = (User) o;
 		return Objects.equal(id, user.id) &&
 			Objects.equal(username, user.username) &&
-			Objects.equal(password, user.password);
+			Objects.equal(password, user.password) &&
+			Objects.equal(apiKey, user.apiKey);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(id, username, password);
+		return Objects.hashCode(id, username, password, apiKey);
 	}
 
 	@Override
@@ -71,6 +84,7 @@ public class User implements Serializable {
 			"id=" + id +
 			", username='" + username + '\'' +
 			", password='" + password + '\'' +
+			", apiKey='" + apiKey + '\'' +
 			'}';
 	}
 }

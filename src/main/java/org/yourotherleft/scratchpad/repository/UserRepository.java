@@ -23,4 +23,13 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 	@Query("select u from User u where u.username = :username")
 	User findByUsername(@Param("username") String username);
 
+	/**
+	 * Fetch users by api key.
+	 *
+	 * @param apiKey The api key.
+	 * @return The user with the given api key.
+	 */
+	@Query("select u from User u where u.apiKey = :apiKey")
+	User findByApiKey(@Param("apiKey") String apiKey);
+
 }

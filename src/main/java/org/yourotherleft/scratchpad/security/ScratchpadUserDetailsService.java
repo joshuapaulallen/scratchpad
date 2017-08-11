@@ -30,8 +30,11 @@ public class ScratchpadUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
 		requireNonNull(username, "username is null");
 
-		final org.yourotherleft.scratchpad.entity.User scratchpadUser =
-			requireNonNull(userRepository.findByUsername(username), String.format("no user for username [%s]", username));
+		final org.yourotherleft.scratchpad.entity.User scratchpadUser = userRepository.findByUsername(username);
+
+		if (scratchpadUser == null) {
+			throw new UsernameNotFoundException(String.format("no user for username [%s]", username));
+		}
 
 		return new User(scratchpadUser.getUsername(), scratchpadUser.getPassword(), Lists.newArrayList());
 	}
